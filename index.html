@@ -35,17 +35,19 @@
             z-index: 100;
         }
 
-        .logo { height: 60px; }
+        .logo {
+            height: 60px;
+        }
 
         /* Hero Section */
         .hero {
-            padding: 80px 20px 60px;
+            padding: 60px 20px;
             text-align: center;
             background: linear-gradient(180deg, #f3f7f4 0%, #eaf3ee 100%);
         }
 
         h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: var(--primary-green);
             margin-bottom: 20px;
@@ -53,9 +55,10 @@
         }
 
         .tagline {
-            font-size: 1.25rem;
-            max-width: 650px;
-            margin: 0 auto 50px;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            max-width: 600px;
+            margin: 0 auto 40px;
         }
 
         /* Boutons de téléchargement */
@@ -69,119 +72,164 @@
         .btn-download {
             background-color: var(--text-dark);
             color: white;
-            padding: 14px 28px;
-            border-radius: 14px;
+            padding: 12px 25px;
+            border-radius: 12px;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 14px;
-            transition: all 0.2s ease;
-            min-width: 190px;
+            gap: 12px;
+            transition: transform 0.2s, background-color 0.2s;
+            min-width: 180px;
         }
 
         .btn-download:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             background-color: #000;
         }
 
-        .btn-download img { width: 32px; }
+        .btn-download img {
+            width: 30px;
+        }
 
-        .btn-text span { font-size: 1.15rem; font-weight: 600; }
+        .btn-text {
+            text-align: left;
+        }
+
+        .btn-text small {
+            display: block;
+            font-size: 0.7rem;
+        }
+
+        .btn-text span {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
 
         /* Section Présentation */
         .about {
-            max-width: 850px;
-            margin: 100px auto 50px;
-            padding: 0 25px;
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 0 20px;
             text-align: center;
         }
 
         .about h2 {
             color: var(--primary-green);
-            font-size: 2rem;
-            margin-bottom: 25px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            color: #4b5563;
         }
 
         /* =========================================
-           SECTION ÉQUIPE - SLIDER OPTIMISÉ PC/MOBILE
+           SECTION ÉQUIPE - DÉFILEMENT AUTO INFINI
            ========================================= */
         .team-section {
-            padding: 80px 0;
+            padding: 60px 0;
             background-color: var(--bg-slider);
             text-align: center;
+            overflow: hidden;
         }
 
         .team-section h2 {
             color: var(--primary-green);
-            margin-bottom: 40px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
         }
 
-        .team-slider {
+        .slider-container {
+            width: 100%;
             display: flex;
-            overflow-x: auto;
-            padding: 40px 0;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            gap: 20px;
-            -webkit-overflow-scrolling: touch;
+            position: relative;
         }
 
-        .team-slider::-webkit-scrollbar { display: none; }
-
-        /* On ajoute du padding sur les côtés pour que la première et dernière card puissent être centrées */
-        .team-slider::before, .team-slider::after {
-            content: '';
-            flex: 0 0 calc(50vw - 150px);
+        .team-track {
+            display: flex;
+            gap: 40px;
+            padding: 40px 0;
+            will-change: transform;
         }
 
         .team-card {
-            flex: 0 0 300px;
+            flex: 0 0 280px;
             background: white;
-            padding: 35px 25px;
-            border-radius: 24px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            scroll-snap-align: center;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            opacity: 0.3; /* Estompé par défaut */
-            transform: scale(0.8); /* Plus petit par défaut */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            opacity: 0.15; /* Effet estompé par défaut */
+            transform: scale(0.85);
         }
 
-        /* La classe "active" sera gérée par le JavaScript ci-dessous */
         .team-card.active {
-            opacity: 1;
-            transform: scale(1);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            opacity: 1; /* Mise en avant au centre */
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
         }
 
         .team-img {
-            width: 120px;
-            height: 120px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid var(--accent-orange);
-            margin-bottom: 20px;
+            border: 4px solid var(--accent-orange);
+            margin-bottom: 15px;
+        }
+
+        .team-card h3 {
+            color: var(--primary-green);
+            margin: 10px 0 5px;
+            font-size: 1.2rem;
+        }
+
+        .team-card p {
+            color: #6b7280;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
         /* Footer */
         footer {
             background-color: var(--primary-green);
             color: white;
-            padding: 60px 25px;
+            padding: 40px 20px;
             text-align: center;
+        }
+
+        .footer-tagline {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
 
         .footer-contacts {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 25px;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
 
-        .footer-contacts img { height: 32px; width: 32px; }
+        .footer-contacts img {
+            height: 28px;
+            width: 28px;
+            object-fit: contain;
+            transition: transform 0.2s;
+        }
+
+        .footer-contacts a:hover img {
+            transform: scale(1.2);
+        }
 
         @media (max-width: 600px) {
-            .team-card { flex: 0 0 260px; }
-            .team-slider::before, .team-slider::after { flex: 0 0 calc(50vw - 130px); }
+            h1 { font-size: 1.8rem; }
+            .btn-download { width: 100%; justify-content: center; }
+            .team-card { flex: 0 0 240px; }
         }
     </style>
 </head>
@@ -193,81 +241,125 @@
 
     <section class="hero">
         <h1>Vivez, on livre.</h1>
-        <p class="tagline">L'infrastructure digitale qui révolutionne la logistique urbaine au Cameroun.</p>
+        <p class="tagline">L'infrastructure digitale qui révolutionne la logistique urbaine au Cameroun. Accédez à vos restaurants et commerces préférés en un clic.</p>
         
         <div class="download-container">
-            <a href="https://apps.apple.com/app/liv-eats-partner/id6759439784" class="btn-download" target="_blank">
+            <a href="https://apps.apple.com/app/liv-eats-partner/id6759439784" class="btn-download" target="_blank" rel="noopener">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" style="filter: invert(1);">
-                <div class="btn-text"><small>Disponible sur</small><span>App Store</span></div>
+                <div class="btn-text">
+                    <small>Disponible sur</small>
+                    <span>App Store</span>
+                </div>
             </a>
-            <a href="https://play.google.com/store/apps/details?id=com.example.livservices" class="btn-download" target="_blank">
+            <a href="https://play.google.com/store/apps/details?id=com.example.livservices" class="btn-download" target="_blank" rel="noopener">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_Play_2022_icon.svg/960px-Google_Play_2022_icon.svg.png" alt="Google Play">
-                <div class="btn-text"><small>Disponible sur</small><span>Google Play</span></div>
+                <div class="btn-text">
+                    <small>Disponible sur</small>
+                    <span>Google Play</span>
+                </div>
             </a>
         </div>
     </section>
 
     <section class="about">
         <h2>Qui sommes-nous ?</h2>
-        <p><strong>LIV SERVICES</strong> est le pont technologique entre les commerçants locaux et les habitants de Yaoundé.</p>
+        <p>
+            <strong>LIV SERVICES</strong> est bien plus qu'une simple application de livraison. Nous sommes le pont technologique entre les commerçants locaux et les habitants de Yaoundé. Notre mission est de simplifier votre quotidien en rendant la commande urbaine simple, rapide et fiable, tout en soutenant la croissance économique locale grâce à une logistique optimisée.
+        </p>
     </section>
 
     <section class="team-section">
-        <h2>Notre équipe</h2>
-        <div class="team-slider" id="teamSlider">
-            <div class="team-card">
-                <img src="Logo liv/team1.jpg" alt="Membre 1" class="team-img">
-                <h3>Ton Nom</h3>
-                <p>Partnership Lead</p>
-            </div>
-            <div class="team-card">
-                <img src="Logo liv/team2.jpg" alt="Membre 2" class="team-img">
-                <h3>Membre 2</h3>
-                <p>Opérations</p>
-            </div>
-            <div class="team-card">
-                <img src="Logo liv/team3.jpg" alt="Membre 3" class="team-img">
-                <h3>Membre 3</h3>
-                <p>Logistique</p>
+        <h2>Vous avez rencontrer l'un ou nos deux collaborateurs</h2>
+        <div class="slider-container" id="sliderContainer">
+            <div class="team-track" id="teamTrack">
+                <div class="team-card">
+                    <img src="Logo liv/bustrel1.jpeg" alt="Partnership manager" class="team-img">
+                    <h3>Bustrel DOMKOU</h3>
+                    <p>Partnership manager</p>
+                </div>
+                <div class="team-card">
+                    <img src="Logo liv/team2.jpg" alt="Partnership manager2" class="team-img">
+                    <h3>Botlel ATONANG</h3>
+                    <p>Partnership manager</p>
+                </div>
+                <div class="team-card">
+                     <img src="Logo liv/bustrel1.jpeg" alt="Partnership manager" class="team-img">
+                    <h3>Bustrel DOMKOU</h3>
+                    <p>Partnership manager</p>
+                </div>
+                <div class="team-card">
+                   <img src="Logo liv/team2.jpg" alt="Partnership manager2" class="team-img">
+                    <h3>Botlel ATONANG</h3>
+                    <p>Partnership manager</p>
+                </div>
+                <div class="team-card">
+                    <img src="Logo liv/bustrel1.jpeg" alt="Partnership manager" class="team-img">
+                    <h3>Bustrel DOMKOU</h3>
+                    <p>Partnership manager</p>
+                </div>
+                <div class="team-card">
+                   <img src="Logo liv/team2.jpg" alt="Partnership manager2" class="team-img">
+                    <h3>Botlel ATONANG</h3>
+                    <p>Partnership manager</p>
+                </div>
+
             </div>
         </div>
     </section>
 
     <footer>
         <p class="footer-tagline">VIVEZ, ON LIVRE !!</p>
+        <p>&copy; 2026 LIV SERVICES. Tous droits réservés.</p>
         <div class="footer-contacts">
-            <a href="https://wa.me/33745948458"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA"></a>
-            <a href="https://www.instagram.com/liv.eats.services"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="IG"></a>
-            <a href="https://order.livservice.com/"><img src="Logo liv/2.png" alt="LIV" style="border-radius:5px;"></a>
+            <span>Contacts :</span>
+            <a href="https://wa.me/33745948458" target="_blank" rel="noopener">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+            </a>
+            <a href="https://www.instagram.com/liv.eats.services?igsh=MXA2ZXpnZ3Y4aDNubw%3D%3D&utm_source=qr" target="_blank" rel="noopener">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/share/1cUheaccYa/?mibextid=wwXIfr" target="_blank" rel="noopener">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+            </a>
+            <a href="https://order.livservice.com/" target="_blank" rel="noopener">
+                <img src="Logo liv/2.png" alt="LIV Order" style="border-radius: 5px;">
+            </a>
         </div>
     </footer>
 
     <script>
-        const slider = document.getElementById('teamSlider');
-        const cards = document.querySelectorAll('.team-card');
+        const track = document.getElementById('teamTrack');
+        let scrollLeft = 0;
 
-        function updateCards() {
-            const sliderCenter = slider.scrollLeft + (slider.offsetWidth / 2);
+        function animate() {
+            scrollLeft += 0.8; // Vitesse douce
+            
+            // Recommencer la boucle au milieu
+            if (scrollLeft >= track.scrollWidth / 2) {
+                scrollLeft = 0;
+            }
+            
+            track.style.transform = `translateX(-${scrollLeft}px)`;
+
+            const cards = document.querySelectorAll('.team-card');
+            const centerX = window.innerWidth / 2;
 
             cards.forEach(card => {
-                const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-                const distance = Math.abs(sliderCenter - cardCenter);
+                const rect = card.getBoundingClientRect();
+                const cardCenter = rect.left + rect.width / 2;
                 
-                // Si la carte est proche du centre (moins de 100px), on l'active
-                if (distance < 150) {
+                // Si la carte est au centre de l'écran (marge de 150px)
+                if (Math.abs(centerX - cardCenter) < 150) {
                     card.classList.add('active');
                 } else {
                     card.classList.remove('active');
                 }
             });
+
+            requestAnimationFrame(animate);
         }
 
-        // Ecouter le scroll
-        slider.addEventListener('scroll', updateCards);
-        // Lancer une fois au chargement
-        window.addEventListener('load', updateCards);
-        // Lancer au redimensionnement
-        window.addEventListener('resize', updateCards);
+        window.onload = animate;
     </script>
 
 </body>
